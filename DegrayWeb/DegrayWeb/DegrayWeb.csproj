@@ -8,4 +8,24 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\img\.DS_Store" />
+    <Content Remove="wwwroot\img\appstore.png" />
+    <Content Remove="wwwroot\img\CHplay.png" />
+    <Content Remove="wwwroot\img\no-cart.png" />
+    <Content Remove="wwwroot\img\qrcode.png" />
+    <Content Remove="wwwroot\img\" />
+    <Content Remove="wwwroot\css\base.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\img\.DS_Store" />
+    <None Include="wwwroot\img\appstore.png" />
+    <None Include="wwwroot\img\CHplay.png" />
+    <None Include="wwwroot\img\no-cart.png" />
+    <None Include="wwwroot\img\qrcode.png" />
+    <None Include="wwwroot\css\base.css" />
+  </ItemGroup>
 </Project>
