@@ -4,36 +4,41 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.DegrayWeb PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DegrayWeb/Views/Home/Product.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DegrayWeb/wwwroot/js/site.js">
     <Files>
-      <File FileName="DegrayWeb/Assets/css/base.css" Line="15" Column="15" />
-      <File FileName="DegrayWeb/Views/Shared/_Layout.cshtml.css" Line="1" Column="1" />
-      <File FileName="DegrayWeb/Views/Shared/_Layout.cshtml" Line="28" Column="90" />
+      <File FileName="DegrayWeb/Program.cs" Line="25" Column="56" />
+      <File FileName="DegrayWeb/Views/Home/ProductDetail.cshtml" Line="7" Column="1" />
       <File FileName="DegrayWeb/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="DegrayWeb/Views/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
-      <File FileName="DegrayWeb/Views/Shared/Error.cshtml" Line="1" Column="1" />
-      <File FileName="DegrayWeb/Views/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="DegrayWeb/Views/Home/Privacy.cshtml" Line="24" Column="17" />
-      <File FileName="DegrayWeb/Assets/css/EmptyCSSFile.css" Line="221" Column="23" />
-      <File FileName="DegrayWeb/wwwroot/css/site.css" Line="1439" Column="27" />
+      <File FileName="DegrayWeb/Views/Home/Product.cshtml" Line="10" Column="3" />
+      <File FileName="DegrayWeb/Controllers/HomeController.cs" Line="23" Column="23" />
+      <File FileName="DegrayWeb/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="DegrayWeb/wwwroot/js/site.js" Line="242" Column="1" />
+      <File FileName="DegrayWeb/Views/Shared/_Layout.cshtml.css" Line="2" Column="16" />
       <File FileName="DegrayWeb/Views/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="DegrayWeb/Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="DegrayWeb/Views/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="DegrayWeb/Views/Shared/_Layout.cshtml" Line="50" Column="67" />
+      <File FileName="DegrayWeb/Views/Shared/Error.cshtml" Line="1" Column="1" />
+      <File FileName="DegrayWeb/wwwroot/css/base.css" Line="234" Column="1" />
+      <File FileName="DegrayWeb/wwwroot/css/site.css" Line="1276" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="DegrayWeb" expanded="True">
-            <Node name="DegrayWeb">
+          <Node name="DegrayWeb">
+            <Node name="DegrayWeb" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Product.cshtml" selected="True" />
-                </Node>
+                <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True">
                   <Node name="_Layout.cshtml" expanded="True" />
                 </Node>
               </Node>
-              <Node name="wwwroot">
+              <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
-                <Node name="img" expanded="True" />
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>

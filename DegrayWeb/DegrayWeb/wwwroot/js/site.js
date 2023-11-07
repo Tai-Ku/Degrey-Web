@@ -202,40 +202,71 @@
         // Thêm các sản phẩm khác vào mảng
     ];
 
-    var productContainer = document.querySelector(".home-product .grid__row"); // Thay đổi selector này nếu cần
 
-    products.forEach(function (product) {
-        var productElement = document.createElement("div");
-        productElement.className = "grid__column-2-4";
-        productElement.innerHTML = `
+
+
+    //
+    var productContainer = document.querySelector(".home-product .grid__row");
+    var productContainer = document.querySelector(".home-product .grid__row");
+    var productsToShow = 15;
+    var productsRendered = 0;
+
+
+    // Hàm render sản phẩm 
+    function renderProducts(startIndex, endIndex) {
+        for (var i = startIndex; i < endIndex; i++) {
+            var product = products[i];
+            var productElement = document.createElement("div");
+            productElement.className = "grid__column-2-4";
+            productElement.innerHTML = `
                 <a href="" class="home-product-item" data-id="${product.id}">
                     <div class="home-product-item__img" style="background-image: url(${product.imageUrl
-            });"></div>
+                });"></div>
                     <h4 class="home-product-item__name">${product.name}</h4>
                     <div class="home-product-item__price">
                            ${product.priceOld ? '<span class="home-product-item__price-old">' + new Intl.NumberFormat().format(product.priceOld) + '₫</span>' : ''}
                         <span class="home-product-item__price-current">${new Intl.NumberFormat().format(product.priceCurrent)
-            }₫</span>
+                }₫</span>
                     </div>
                     <div class="home-product-item__favourite">
-                    ${!product.isAvailable ? "<span>Tạm hết hàng</span>":""}
+                    ${!product.isAvailable ? "<span>Tạm hết hàng</span>" : ""}
                     </div>
                 </a>
             `;
-        productContainer.appendChild(productElement);
+            productContainer.appendChild(productElement);
+            productsRendered++;
+        }
+    }
+
+
+    // Hiển thị sản phẩm ban đầu
+    renderProducts(0, productsToShow);
+
+    var loadMoreButton = document.querySelector(".btn-load");
+    loadMoreButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        var startIndex = productsRendered;
+        var endIndex = startIndex + productsToShow;
+
+        if (startIndex < products.length) {
+            renderProducts(startIndex, endIndex);
+        } else {
+            loadMoreButton.style.display = "none";
+        }
     });
+
 
     // Thêm sự kiện click cho mỗi item sản phẩm
     var productItems = document.querySelectorAll(".home-product-item");
     productItems.forEach(function (item) {
         item.addEventListener("click", function (event) {
-            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+            event.preventDefault();
             var productId = this.dataset.id; // Lấy ID của sản phẩm
             console.log(productId);
             window.location.href = '/Home/ProductDetail/' + productId
-            // Chuyển hướng đến trang chi tiết sản phẩm
         });
     });
+
 }
 
 initApp();
