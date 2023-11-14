@@ -14,7 +14,7 @@
             name: "Degrey Medium Leather Basic Balo Kem - MLBBK",
             imageUrl:
                 "https://product.hstatic.net/1000281824/product/mlbbk_3__73448b41ad494ffb8b6e0e754a9833a9_large.png",
-            priceOld: 380000 ,
+            priceOld: 380000,
             priceCurrent: 300000,
             isAvailable: false,
         },

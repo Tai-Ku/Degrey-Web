@@ -1,4 +1,4 @@
-﻿@*Này là t ví dụ cho m để m gắn dữ liệu vào nha*@
+﻿@*Này là t ví dụ cho m để m gắn dữ liệu vào *@
 
 @*@{
         var products = new List<ProductViewModel>
@@ -74,3 +74,37 @@
     </div>
 </div>
 
+<script>document.addEventListener("DOMContentLoaded", function () {
+        
+updateTotalPrice();
+       
+});
+    var quantityField = document.querySelector('.quantity-field');
+    var minusButton = document.querySelector('.button-minus');
+    var plusButton = document.querySelector('.button-plus');
+    var totalPriceElement = document.getElementById('totalPrice');
+
+    minusButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityField.value);
+        if (currentQuantity > 1) {
+            quantityField.value = currentQuantity - 1;
+            updateTotalPrice();
+        }
+    });
+
+    plusButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityField.value);
+        console.log(123)
+        if (currentQuantity < 10) {
+            quantityField.value = currentQuantity + 1;
+            updateTotalPrice();
+        }
+    });
+
+    function updateTotalPrice() {
+        var price = 500000; // Update with your actual price
+        var quantity = parseInt(quantityField.value);
+        var totalPrice = price * quantity;
+        totalPriceElement.innerText = totalPrice;
+    }
+    </script>
