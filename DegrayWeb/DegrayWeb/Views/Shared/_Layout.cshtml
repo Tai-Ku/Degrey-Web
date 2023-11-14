@@ -37,6 +37,55 @@
                             <a class="nav-link text-dark" style="font-size: 16px; font-weight: 300;" asp-area="" asp-controller="Home" asp-action="Product">Sản phẩm</a>
                         </li>
                     </ul>
+
+
+
+                                @*Note*@
+
+                    @*Này là phần giở hàng t cũng ví dụ cho m để m render dữ liệu ra nha*@
+
+
+                    @*<div class="nav-list-center">
+            <div class="header__cart">
+                <div class="header__cart-wrap">
+                    <span class="header__cart-notice">@Model.Count()</span>
+                    <i class="header__cart-icon ri-shopping-cart-line"></i>
+                    <div class="header__cart-list">
+                        @if (Model.Any())
+                        {
+                            <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
+                            <ul class="header__cart-list-item">
+                                @foreach (var item in Model)
+                                {
+                                    <li class="header__cart-item" style="cursor:pointer">
+                                        <img src="@item.ImageUrl" alt="" class="header__cart-img" />
+                                        <div class="header__cart-item-info">
+                                            <div class="header__cart-item-head">
+                                                <h5 class="header__cart-item-name">@item.Name</h5>
+                                                <div class="header__cart-item-price-wrap">
+                                                    <span class="header__cart-item-price">@item.Price.ToString("C")</span>
+                                                    <span class="header__cart-item-mutiply">x</span>
+                                                    <span class="header__cart-item-quantity">@item.Quantity</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                            <a class="header__cart-item button-cart" style="cursor:pointer" asp-area="" asp-controller="Home" asp-action="Cart">Xem sản phẩm</a>
+                        }
+                        else
+                        {
+
+                            <img src="./asser/img/no-cart.png" alt="" class="header__cart--no-cart-img" />
+                            <span class="header__cart-list--no-cart-footer">Chưa Có Sản Phẩm</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
                     <div class="nav-list-center">
                         <div class="header__cart">
                             <div class="header__cart-wrap">
