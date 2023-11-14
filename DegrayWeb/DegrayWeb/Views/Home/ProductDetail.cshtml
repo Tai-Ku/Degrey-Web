@@ -1,12 +1,8 @@
 ﻿@{
     var productId = ViewBag.ProductId;
 
-    // Hoặc nếu bạn sử dụng ViewData
-    // var productId = ViewData["ProductId"];
 }
 
-<!-- Sử dụng productId để hiển thị thông tin sản phẩm -->
-<p>Product ID: @productId</p>
 
 
 <div class="container mt-5">
@@ -17,45 +13,56 @@
         <div class="col-md-6">
             <h2>Degrey Medium Leather Basic Balo Kem - MLBBK</h2>
             <p style="font-size:14px; font-weight:400;line-height:18px">Đây là một sản phẩm ví dụ với mô tả chi tiết.Đây là một sản phẩm ví dụ với mô tả chi tiết.Đây là một sản phẩm ví dụ với mô tả chi tiết.Đây là một sản phẩm ví dụ với mô tả chi tiết.Đây là một sản phẩm ví dụ với mô tả chi tiết.Đây là một sản phẩm ví dụ với mô tả chi tiết.Đây là một sản phẩm ví dụ với mô tả chi tiết.</p>
-            <p>Price: 500000₫</p>
 
-            <!-- Số lượng sản phẩm và nút mua hàng -->
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button" id="minusBtn">-</button>
-                </div>
-                <input type="text" class="form-control text-center" id="quantityInput" value="1">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="plusBtn">+</button>
+            <div class="col-12">
+                <div style="display: flex; align-items: center; justify-content: start;">
+                    <p style="font-size:14px; font-weight:400;line-height:18px">Price: <span id="totalPrice">500000</span>₫</p>
+
+                    <div class="input-group w-auto justify-content-end align-items-center">
+                        <input type="button" value="-" class="button-minus border rounded-circle  icon-shape icon-sm mx-1 " data-field="quantity">
+                        <input type="number" step="1" max="10" value="1" name="quantity" class="quantity-field border-0 text-center w-25">
+                        <input type="button" value="+" class="button-plus border rounded-circle icon-shape icon-sm " data-field="quantity">
+                    </div>
                 </div>
             </div>
-            <button class="btn btn-primary" id="buyButton">Mua Hàng</button>
+            <button class="button-cart" id="buyButton" role="button">
+
+
+                Mua Hàng
+            </button>
         </div>
+
     </div>
 </div>
 
+<script>var quantityField = document.querySelector('.quantity-field');
+    var minusButton = document.querySelector('.button-minus');
+    var plusButton = document.querySelector('.button-plus');
+    var totalPriceElement = document.getElementById('totalPrice');
 
+    updateTotalPrice(); 
 
-<script>// JavaScript để quản lý số lượng sản phẩm
-    var quantityInput = document.getElementById('quantityInput');
-    var minusBtn = document.getElementById('minusBtn');
-    var plusBtn = document.getElementById('plusBtn');
-
-    minusBtn.addEventListener('click', function () {
-        if (quantityInput.value > 1) {
-            quantityInput.value = parseInt(quantityInput.value) - 1;
+    minusButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityField.value);
+        if (currentQuantity > 1) {
+            quantityField.value = currentQuantity - 1;
+            updateTotalPrice();
         }
     });
 
-    plusBtn.addEventListener('click', function () {
-        quantityInput.value = parseInt(quantityInput.value) + 1;
+    plusButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityField.value);
+        if (currentQuantity < 10) {
+            quantityField.value = currentQuantity + 1;
+            updateTotalPrice();
+        }
     });
 
-    // JavaScript để xử lý logic khi nhấn nút mua hàng
-    var buyButton = document.getElementById('buyButton');
-    buyButton.addEventListener('click', function () {
-        var productId = 1;
-        var quantity = parseInt(quantityInput.value);
-        // Gửi thông tin sản phẩm và số lượng tới server hoặc xử lý logic mua hàng ở đây
-        console.log('Mua sản phẩm có ID ' + productId + ' với số lượng ' + quantity);
-    });</script>
+    function updateTotalPrice() {
+        var price = 500000; // Update with your actual price
+        var quantity = parseInt(quantityField.value);
+        var totalPrice = price * quantity;
+        totalPriceElement.innerText = totalPrice;
+    }
+
+    </script>

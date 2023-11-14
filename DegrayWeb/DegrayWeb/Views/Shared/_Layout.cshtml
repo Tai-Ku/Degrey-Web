@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.css"
+          integrity="sha512-0JEaZ1BDR+FsrPtq5Ap9o05MUwn8lKs2GiCcRVdOH0qDcUcCoMKi8fDVJ9gnG8VN1Mp/vuWw2sMO0SQom5th4g=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
 
 
 </head>
@@ -27,9 +32,20 @@
                             <a class="nav-link text-dark" style="font-size: 16px; font-weight: 300;" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" style="font-size: 16px; font-weight: 300;"  asp-area="" asp-controller="Home" asp-action="Product">Sản phẩm</a>
+                            <a class="nav-link text-dark" style="font-size: 16px; font-weight: 300;" asp-area="" asp-controller="Home" asp-action="Product">Sản phẩm</a>
                         </li>
                     </ul>
+                    <div class="nav-list-center">
+                        <ul class="nav-list">
+                            <!--# shopping-cart #-->
+                            <div class="cart-btn">
+                                <span class="nav-icon">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </span>
+                                <div class="cart-items">0</div>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
