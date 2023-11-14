@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.css"
-          integrity="sha512-0JEaZ1BDR+FsrPtq5Ap9o05MUwn8lKs2GiCcRVdOH0qDcUcCoMKi8fDVJ9gnG8VN1Mp/vuWw2sMO0SQom5th4g=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
+     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.3.0/remixicon.css"
+      integrity="sha512-0JEaZ1BDR+FsrPtq5Ap9o05MUwn8lKs2GiCcRVdOH0qDcUcCoMKi8fDVJ9gnG8VN1Mp/vuWw2sMO0SQom5th4g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
 
 </head>
@@ -36,16 +38,44 @@
                         </li>
                     </ul>
                     <div class="nav-list-center">
-                        <ul class="nav-list">
-                            <!--# shopping-cart #-->
-                            <div class="cart-btn">
-                                <span class="nav-icon">
-                                    <i class="ri-shopping-cart-line"></i>
-                                </span>
-                                <div class="cart-items">0</div>
+                        <div class="header__cart">
+                            <div class="header__cart-wrap">
+                                <san class="header__cart-notice"> 3 </san>
+                                <i class="header__cart-icon ri-shopping-cart-line"></i>
+                                <!-- header__cart-list--no-cart -->
+                                <div class="header__cart-list">
+                                    <img src="./asser/img/no-cart.png"
+                                         alt=""
+                                         class="header__cart--no-cart-img" />
+                                    <span class="header__cart-list--no-cart-footer">Chưa Có Sản Phẩm</span>
+
+                                    <h4 class="header__cart-heading">Sản phẩm đã thêm</h4>
+                                    <ul class="header__cart-list-item">
+                                        <!-- cart-item -->
+                                        <li class="header__cart-item" style="cursor:pointer">
+                                            <img src="https://product.hstatic.net/1000281824/product/mlbbk_3__73448b41ad494ffb8b6e0e754a9833a9_large.png"
+                                                 alt=""
+                                                 class="header__cart-img" />
+                                            <div class="header__cart-item-info">
+                                                <div class="header__cart-item-head">
+                                                    <h5 class="header__cart-item-name">
+                                                        Product 1
+                                                    </h5>
+                                                    <div class="header__cart-item-price-wrap">
+                                                        <span class="header__cart-item-price">2.000.000đ</span>
+                                                        <span class="header__cart-item-mutiply">x</span>
+                                                        <span class="header__cart-item-quantity">2</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <a class="header__cart-item button-cart" style="cursor:pointer" asp-area="" asp-controller="Home" asp-action="Cart">Xem sản phẩm</a>
+                                </div>
                             </div>
-                        </ul>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </nav>

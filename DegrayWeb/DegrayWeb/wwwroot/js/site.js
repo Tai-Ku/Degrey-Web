@@ -210,9 +210,19 @@
     var productContainer = document.querySelector(".home-product .grid__row");
     var productsToShow = 15;
     var productsRendered = 0;
+    var cartItems = [];
 
 
-    // Hàm render sản phẩm 
+
+    // Hàm render sản phẩm
+    function updateCartItemCount() {
+        var cartItemCountElement = document.querySelector('.cart-items');
+        if (cartItemCountElement) {
+            cartItemCountElement.textContent = cartItems.reduce((total, item) => total + item.quantity, 0).toString();
+        }
+    }
+
+
     function renderProducts(startIndex, endIndex) {
         for (var i = startIndex; i < endIndex; i++) {
             var product = products[i];
@@ -220,23 +230,50 @@
             productElement.className = "grid__column-2-4";
             productElement.innerHTML = `
                 <a href="" class="home-product-item" data-id="${product.id}">
-                    <div class="home-product-item__img" style="background-image: url(${product.imageUrl
-                });"></div>
+                    <div class="home-product-item__img" style="background-image: url(${product.imageUrl});"></div>
                     <h4 class="home-product-item__name">${product.name}</h4>
                     <div class="home-product-item__price">
-                           ${product.priceOld ? '<span class="home-product-item__price-old">' + new Intl.NumberFormat().format(product.priceOld) + '₫</span>' : ''}
-                        <span class="home-product-item__price-current">${new Intl.NumberFormat().format(product.priceCurrent)
-                }₫</span>
+                        ${product.priceOld ? '<span class="home-product-item__price-old">' + new Intl.NumberFormat().format(product.priceOld) + '₫</span>' : ''}
+                        <span class="home-product-item__price-current">${new Intl.NumberFormat().format(product.priceCurrent)}₫</span>
                     </div>
                     <div class="home-product-item__favourite">
-                    ${!product.isAvailable ? "<span>Tạm hết hàng</span>" : ""}
+                        ${!product.isAvailable ? "<span>Tạm hết hàng</span>" : ""}
                     </div>
                 </a>
             `;
+
+            // Thêm sự kiện click để thêm sản phẩm vào giỏ hàng
+            productElement.addEventListener("click", function (event) {
+                event.preventDefault();
+                var productId = this.dataset.id; // Lấy ID của sản phẩm
+
+                // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+                var existingItem = cartItems.find(item => item.id === productId);
+
+                if (existingItem) {
+                    existingItem.quantity++; // Nếu đã tồn tại, tăng số lượng lên 1
+                } else {
+                    // Nếu chưa tồn tại, thêm sản phẩm mới vào giỏ hàng
+                    var selectedProduct = products.find(product => product.id === productId);
+                    if (selectedProduct) {
+                        cartItems.push({
+                            id: selectedProduct.id,
+                            name: selectedProduct.name,
+                            price: selectedProduct.priceCurrent,
+                            quantity: 1
+                        });
+                    }
+                }
+
+                // Cập nhật số lượng sản phẩm trong giỏ hàng
+                updateCartItemCount();
+            });
+
             productContainer.appendChild(productElement);
             productsRendered++;
         }
     }
+
 
 
     // Hiển thị sản phẩm ban đầu
@@ -266,6 +303,46 @@
             window.location.href = '/Home/ProductDetail/' + productId
         });
     });
+
+
+
+
+
+
+
+    //
+
+
+
+    var quantityField = document.querySelector('.quantity-field');
+    var minusButton = document.querySelector('.button-minus');
+    var plusButton = document.querySelector('.button-plus');
+    var totalPriceElement = document.getElementById('totalPrice');
+
+    updateTotalPrice();
+
+    minusButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityField.value);
+        if (currentQuantity > 1) {
+            quantityField.value = currentQuantity - 1;
+            updateTotalPrice();
+        }
+    });
+
+    plusButton.addEventListener('click', function () {
+        var currentQuantity = parseInt(quantityField.value);
+        if (currentQuantity < 10) {
+            quantityField.value = currentQuantity + 1;
+            updateTotalPrice();
+        }
+    });
+
+    function updateTotalPrice() {
+        var price = 500000; // Update with your actual price
+        var quantity = parseInt(quantityField.value);
+        var totalPrice = price * quantity;
+        totalPriceElement.innerText = totalPrice;
+    }
 
 }
 

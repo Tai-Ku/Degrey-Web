@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/macos/Documents/Createfolder/Dev/Huflit-CNTT/web/Degrey-Web/DegrayWeb/DegrayWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/macos/Documents/Createfolder/Dev/Huflit-CNTT/web/Degrey-Web/DegrayWeb/DegrayWeb/Views/Home/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/macos/Documents/Createfolder/Dev/Huflit-CNTT/web/Degrey-Web/DegrayWeb/DegrayWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

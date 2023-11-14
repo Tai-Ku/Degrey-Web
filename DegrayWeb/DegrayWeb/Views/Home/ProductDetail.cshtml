@@ -26,8 +26,6 @@
                 </div>
             </div>
             <button class="button-cart" id="buyButton" role="button">
-
-
                 Mua Hàng
             </button>
         </div>
@@ -35,34 +33,3 @@
     </div>
 </div>
 
-<script>var quantityField = document.querySelector('.quantity-field');
-    var minusButton = document.querySelector('.button-minus');
-    var plusButton = document.querySelector('.button-plus');
-    var totalPriceElement = document.getElementById('totalPrice');
-
-    updateTotalPrice(); 
-
-    minusButton.addEventListener('click', function () {
-        var currentQuantity = parseInt(quantityField.value);
-        if (currentQuantity > 1) {
-            quantityField.value = currentQuantity - 1;
-            updateTotalPrice();
-        }
-    });
-
-    plusButton.addEventListener('click', function () {
-        var currentQuantity = parseInt(quantityField.value);
-        if (currentQuantity < 10) {
-            quantityField.value = currentQuantity + 1;
-            updateTotalPrice();
-        }
-    });
-
-    function updateTotalPrice() {
-        var price = 500000; // Update with your actual price
-        var quantity = parseInt(quantityField.value);
-        var totalPrice = price * quantity;
-        totalPriceElement.innerText = totalPrice;
-    }
-
-    </script>

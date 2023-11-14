@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Giỏ Hàng";
+}
+
+<h1>Giỏ Hàng</h1>
+<div id="cartItemsContainer" class="row">
+    <!-- Render sản phẩm từ dữ liệu giả định -->
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+            <img src="https://product.hstatic.net/1000281824/product/mlbbk_3__73448b41ad494ffb8b6e0e754a9833a9_large.png" class="card-img" alt="Product 1">
+            <div class="card-body text-center">
+                <h5 class="card-title">Product 1</h5>
+                <p class="card-text">Giá: 100,000 VND</p>
+                <p class="card-text">Tình trạng: <span class="text-success">Còn hàng</span></p>
+                <button class="btn btn-danger" onclick="removeItem(this, 1)">Xóa</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card">
+            <img src="https://product.hstatic.net/1000281824/product/mlbbk_3__73448b41ad494ffb8b6e0e754a9833a9_large.png" class="card-img" alt="Product 2">
+            <div class="card-body text-center">
+                <h5 class="card-title">Product 2</h5>
+                <p class="card-text">Giá: 150,000 VND</p>
+                <p class="card-text">Tình trạng: <span class="text-danger">Hết hàng</span></p>
+                <button class="btn btn-danger" onclick="removeItem(this, 2)">Xóa</button>
+            </div>
+        </div>
+    </div>
+    <!-- Thêm các sản phẩm giả định khác vào đây... -->
+</div>
+
+<!-- Thanh toán và xác nhận modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkoutModalLabel">Thanh Toán</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Nội dung xác nhận thanh toán -->
+                <p>Xác nhận thanh toán giỏ hàng của bạn?</p>
+                <p id="totalAmount">Tổng giá trị đơn hàng: 0 VND</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="confirmPurchase()">Xác Nhận Mua Hàng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Nút thanh toán và tổng giá trị đơn hàng -->
+<div class="text-center mt-3">
+    <button class="btn btn-primary" id="checkoutButton" data-toggle="modal" data-target="#checkoutModal">Thanh Toán</button>
+    <p id="totalAmountDisplay">Tổng giá trị đơn hàng: 0 VND</p>
+</div>
+
+<!-- Kịch bản JavaScript để hiển thị modal khi nhấn nút Thanh Toán và xử lý các sự kiện khác -->
+<script>
+    document.getElementById('checkoutButton').addEventListener('click', function () {
+        updateTotalAmount();
+        $('#checkoutModal').modal('show');
+    });
+
+    var totalAmount = 0;
+
+    function updateTotalAmount() {
+        // Lấy tất cả các giá trị sản phẩm trong giỏ hàng
+        var itemPrices = document.querySelectorAll('.card-text');
+
+        // Tính tổng giá trị đơn hàng
+        totalAmount = Array.from(itemPrices).reduce(function (sum, item) {
+            if (item.innerText.includes("Giá:")) {
+                var price = parseInt(item.innerText.match(/\d+/)[0]); // Lấy giá trị số từ chuỗi
+                return sum + price;
+            }
+            return sum;
+        }, 0);
+
+        // Hiển thị tổng giá trị đơn hàng
+        document.getElementById('totalAmount').textContent = 'Tổng giá trị đơn hàng: ' + totalAmount + ' VND';
+        document.getElementById('totalAmountDisplay').textContent = 'Tổng giá trị đơn hàng: ' + totalAmount + ' VND';
+    }
+
+    function confirmPurchase() {
+        // Thực hiện các xử lý khi người dùng xác nhận mua hàng
+        alert('Đã xác nhận mua hàng. Thực hiện các xử lý thanh toán ở đây. Tổng giá trị đơn hàng: ' + totalAmount + ' VND');
+    }
+
+    function removeItem(button, productId) {
+        // Đối tượng sản phẩm cha của nút xóa
+        var productCard = button.closest('.card');
+
+        // Lấy giá trị sản phẩm cần xóa
+        var priceElement = productCard.querySelector('.card-text');
+        var price = parseInt(priceElement.innerText.match(/\d+/)[0]);
+
+        // Trừ giá trị sản phẩm khỏi tổng giá trị đơn hàng
+        totalAmount -= price;
+        updateTotalAmount();
+
+        // Xóa sản phẩm khỏi DOM
+        productCard.remove();
+
+        // Thực hiện các xử lý khác nếu cần
+        console.log('Đã xóa sản phẩm có ID ' + productId);
+    }
+</script>
